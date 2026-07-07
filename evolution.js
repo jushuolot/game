@@ -6,15 +6,15 @@
   "use strict";
 
   var DEFAULT = {
-    version: "6.1.0",
-    generation: 62,
-    universeDay: 11,
+    version: "6.1.1",
+    generation: 63,
+    universeDay: 12,
     civilizationEpoch: "1929-07",
-    civilizationDay: 62,
-    civilizationYear: 2053,
+    civilizationDay: 63,
+    civilizationYear: 2055,
     civilizationPhase: "超越期",
     autoTune: { enabled: true, windowSize: 8, maxMoveAdjust: 3, targetWinRate: 0.52 },
-    patchNotes: ["Gen.62 文明时钟", "超越期 2053 · 馋嘴生活日营地档案"],
+    patchNotes: ["Gen.63 文明时钟", "超越期 2055 · 线索爆发日资料室"],
   };
 
   window.MATCH3_EVOLUTION = DEFAULT;
