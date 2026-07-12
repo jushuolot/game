@@ -27,6 +27,7 @@
     pitWallHazardScan: { amount: 0.026, phases: ["超越期"], universeDayMod: 3 },
     campKitchenLedger: { amount: 0.021, phases: ["超越期"], universeDayMod: 4 },
     clueBurstArchive: { amount: 0.028, phases: ["超越期"], universeDayMod: 5 },
+    campLanternReel: { amount: 0.023, phases: ["超越期"], universeDayMod: 6 },
     bounty: {
       label: "任务赏金(演示)",
       endpoint: "https://api.coingecko.com/api/v3/ping",
@@ -151,6 +152,7 @@
     lastPitWallHazardScan: "",
     lastCampKitchenLedger: "",
     lastClueBurstArchive: "",
+    lastCampLanternReel: "",
   };
 
   var tickTimer = null;
@@ -180,6 +182,7 @@
       state.lastPitWallHazardScan = data.lastPitWallHazardScan || "";
       state.lastCampKitchenLedger = data.lastCampKitchenLedger || "";
       state.lastClueBurstArchive = data.lastClueBurstArchive || "";
+      state.lastCampLanternReel = data.lastCampLanternReel || "";
     } catch (e) {
       // ignore
     }
@@ -202,6 +205,7 @@
           lastPitWallHazardScan: state.lastPitWallHazardScan,
           lastCampKitchenLedger: state.lastCampKitchenLedger,
           lastClueBurstArchive: state.lastClueBurstArchive,
+          lastCampLanternReel: state.lastCampLanternReel,
           updatedAt: Date.now(),
         })
       );
@@ -231,6 +235,11 @@
       label: "线索突发归档",
       source: "network_settlement",
       description: "周五线索爆发日整理新坑遥测、金杖纹样与陶盉脂痕，模拟档案入账",
+    });
+    registerChannel("camp_lantern_reel", {
+      label: "营地灯影归档",
+      source: "network_settlement",
+      description: "周六整活日整理营地灯影、铜铃玩笑与神树回波，模拟口述档案入账",
     });
   }
 
@@ -475,7 +484,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastNewPitDataRoom = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2055 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
     var credited = creditChannel("new_pit_data_room", {
       amount: cfg.amount,
       meta: {
@@ -507,7 +516,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampArgumentArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2055 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
     return creditChannel("camp_argument_archive", {
       amount: cfg.amount,
       meta: {
@@ -536,7 +545,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastPitWallHazardScan = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2055 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
     return creditChannel("pit_wall_hazard_scan", {
       amount: cfg.amount,
       meta: {
@@ -565,7 +574,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampKitchenLedger = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2055 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
     return creditChannel("camp_kitchen_ledger", {
       amount: cfg.amount,
       meta: {
@@ -594,11 +603,40 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastClueBurstArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2055 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
     return creditChannel("clue_burst_archive", {
       amount: cfg.amount,
       meta: {
         kind: "clue_burst_cross_archive",
+        universeDay: uday,
+        generation: evo.generation || 0,
+        phase: phase,
+        year: civ.civilizationYear,
+        simulated: true,
+      },
+    });
+  }
+
+  function tryCampLanternReel() {
+    var evo = typeof window !== "undefined" && window.MATCH3_EVOLUTION ? window.MATCH3_EVOLUTION : {};
+    var uday = evo.universeDay || 0;
+    var cfg = CONFIG.campLanternReel;
+    if (!cfg || uday % 7 !== cfg.universeDayMod) return 0;
+    var key = todayKey() + "-g" + (evo.generation || "x") + "-u" + uday;
+    if (state.lastCampLanternReel === key) return 0;
+    var clock =
+      typeof window !== "undefined" && window.MATCH3_CIVILIZATION_CLOCK
+        ? window.MATCH3_CIVILIZATION_CLOCK
+        : null;
+    var phase = clock ? clock.getPhase() : evo.civilizationPhase || "超越期";
+    if (cfg.phases.indexOf(phase) < 0) return 0;
+    state.lastCampLanternReel = key;
+    saveState();
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    return creditChannel("camp_lantern_reel", {
+      amount: cfg.amount,
+      meta: {
+        kind: "camp_lantern_reel",
         universeDay: uday,
         generation: evo.generation || 0,
         phase: phase,
@@ -664,6 +702,7 @@
     tryPitWallHazardScan();
     tryCampKitchenLedger();
     tryClueBurstArchive();
+    tryCampLanternReel();
     tryAffiliateReferral();
     startPeriodicTick();
     deferNetworkProbes();

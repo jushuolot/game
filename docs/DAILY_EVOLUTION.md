@@ -175,6 +175,8 @@ MATCH3_CIVILIZATION_CLOCK.formatForSplash(); // "Gen.50 · 文明历 2029 · 复
 | `new_pit_data_room` | `network_settlement` | 宇宙日 mod 7 = 1 的新坑日首次启动 |
 | `pit_wall_hazard_scan` | `network_settlement` | 宇宙日 mod 7 = 3 的险情日首次启动 |
 | `camp_kitchen_ledger` | `network_settlement` | 宇宙日 mod 7 = 4 的馋嘴/生活日首次启动 |
+| `clue_burst_archive` | `network_settlement` | 宇宙日 mod 7 = 5 的线索爆发日首次启动 |
+| `camp_lantern_reel` | `network_settlement` | 宇宙日 mod 7 = 6 的周六整活日首次启动 |
 
 ### 新增渠道模板（复制改写）
 
@@ -197,8 +199,8 @@ MATCH3_NETWORK_EARNINGS.creditChannel("my_channel", { amount: 0.01, meta: { ... 
 
 ## 当前基线
 
-- **Gen.63** · v6.1.1 · 宇宙第 12 日 · 线索爆发日 · **文明历 2055 · 超越期**
-- 文明时钟已上线；堪舆图、桌面 VN、发现弹窗、三星盛典、新坑资料室、营地口述档案、坑壁险情扫描、营地伙食账本与线索突发归档寻金渠道已就绪
+- **Gen.64** · v6.1.1 · 宇宙第 13 日 · 周六整活日 · **文明历 2057 · 超越期**
+- 文明时钟已上线；堪舆图、桌面 VN、发现弹窗、三星盛典、新坑资料室、营地口述档案、坑壁险情扫描、营地伙食账本、线索突发归档与营地灯影归档寻金渠道已就绪
 
 ---
 
