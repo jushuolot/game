@@ -15,29 +15,29 @@
     chapters: [
       {
         nodes: [
-          { id: "c0n0", name: "铜铃资料室", level: 0, x: -3.5, z: 2.2, discover: ["chenli", "二〇五七，第十三日整活日。探照灯刚开，资料室铜铃先笑了一声——新坑遥测和营地灯影从第一铲就缠在一起。"], artifactHint: 3 },
-          { id: "c0n1", name: "陶片层", level: 4, x: -2, z: 0.8, discover: ["wangdun", "胖爷铲子下去——陶片！成片的！刘哥你别把线索红绳拴在豆花碗上！"], artifactHint: 3 },
-          { id: "c0n2", name: "象牙露头", level: 9, x: -0.5, z: -0.3, discover: ["yangxue", "象牙饰！古蜀不产象，这是丝路来的；旁边的遥测噪点像铜铃回波留下的尾音。"], artifactHint: 4 },
-          { id: "c0n3", name: "金粉纹层", level: 14, x: 1, z: -1.2, discover: ["jinyaliu", "金粉！刘哥我……就看看！王墩你闭嘴，二〇五七的线索板不能把我心跳也写成周六花絮吧？"], artifactHint: 1 },
+          { id: "c0n0", name: "铜铃资料室", level: 0, x: -3.5, z: 2.2, discover: ["chenli", "二〇五九，第十四日复盘日。探照灯刚开，资料室先翻图鉴——新坑遥测、探方照片和公开图像从第一铲就缠在一起。"], artifactHint: 3 },
+          { id: "c0n1", name: "陶片层", level: 4, x: -2, z: 0.8, discover: ["wangdun", "胖爷铲子下去——陶片！成片的！刘哥你别把线索红绳拴在粥勺上，复盘表还没签字！"], artifactHint: 3 },
+          { id: "c0n2", name: "象牙露头", level: 9, x: -0.5, z: -0.3, discover: ["yangxue", "象牙饰！古蜀不产象，这是丝路来的；旁边的遥测噪点像二〇五九复盘表留下的尾音。"], artifactHint: 4 },
+          { id: "c0n3", name: "金粉纹层", level: 14, x: 1, z: -1.2, discover: ["jinyaliu", "金粉！刘哥我……就看看！王墩你闭嘴，二〇五九的线索板不能把我心跳也写成复盘误差吧？"], artifactHint: 1 },
           { id: "c0n4", name: "祭祀面", level: 18, x: 2.2, z: -2, discover: ["hutan", "罗盘疯了。前面是祭祀面，层位不能乱，铜铃再响也先退半步。"], artifactHint: 0 },
           { id: "c0n5", name: "青铜门墓", level: 19, isTomb: true, discover: ["chenli", "门缝里有光，金杖纹样也对上了。I 级大墓——青铜门启。"], artifactHint: 0 },
         ],
       },
       {
         nodes: [
-          { id: "c1n0", name: "门后甬道", level: 20, x: -3.2, z: 2, discover: ["yangxue", "二〇五七，超越期第十三日。门后风带着铜锈和雨后灯影——线索网比人间论文快一代。"], artifactHint: 0 },
-          { id: "c1n1", name: "封土区", level: 24, x: -1.8, z: 0.5, discover: ["yangxue", "封土层！消除相邻文物等于震土，但二〇五七模型提醒：先留住新坑遥测。"], artifactHint: 3 },
+          { id: "c1n0", name: "门后甬道", level: 20, x: -3.2, z: 2, discover: ["yangxue", "二〇五九，超越期第十四日。门后风带着铜锈和图鉴纸页声——线索网比人间论文快一代。"], artifactHint: 0 },
+          { id: "c1n1", name: "封土区", level: 24, x: -1.8, z: 0.5, discover: ["yangxue", "封土层！消除相邻文物等于震土，但二〇五九模型提醒：先留住新坑遥测。"], artifactHint: 3 },
           { id: "c1n2", name: "金杖影", level: 29, x: -0.3, z: -0.8, discover: ["narrator", "黑暗中一根金杖的轮廓。王权与神权，在一根杖上。"], artifactHint: 1 },
           { id: "c1n3", name: "神格位", level: 34, x: 1.2, z: -1.8, discover: ["chenli", "面具不是装饰，是容器。记录每一面。"], artifactHint: 0 },
-          { id: "c1n4", name: "千面阵", level: 38, x: 2.5, z: -2.8, discover: ["wangdun", "妈呀，全是眼睛！胖爷先消一层——金牙刘闭上你的估价嘴，杨雪的铜铃频谱还亮着！"], artifactHint: 0 },
+          { id: "c1n4", name: "千面阵", level: 38, x: 2.5, z: -2.8, discover: ["wangdun", "妈呀，全是眼睛！胖爷先消一层——金牙刘闭上你的估价嘴，杨雪的复盘频谱还亮着！"], artifactHint: 0 },
           { id: "c1n5", name: "纵目神墓", level: 39, isTomb: true, discover: ["hutan", "II 级大墓。纵目之神，在等我们读完层位。"], artifactHint: 0 },
         ],
       },
       {
         nodes: [
-          { id: "c2n0", name: "树根层", level: 40, x: -3, z: 2.5, discover: ["wangdun", "神树！根比胖爷腰还粗——二〇五七第十三日，胖爷少贫嘴，第一铲前先把歪营灯扶正！"], artifactHint: 2 },
-          { id: "c2n1", name: "树腰洞", level: 44, x: -1.5, z: 1, discover: ["hutan", "树腰有榫眼。古蜀人插真枝于此，二〇五七的罗盘说它还在长，也在回应雨后营灯。"], artifactHint: 2 },
-          { id: "c2n2", name: "半百祭台", level: 49, x: 0, z: -0.2, discover: ["chenli", "第五十层探方。半百之数，祭台现；线索资料室给它补了二〇五七周六标签。"], artifactHint: 5 },
+          { id: "c2n0", name: "树根层", level: 40, x: -3, z: 2.5, discover: ["wangdun", "神树！根比胖爷腰还粗——二〇五九第十四日，胖爷少贫嘴，第一铲前先把雨靴晾好！"], artifactHint: 2 },
+          { id: "c2n1", name: "树腰洞", level: 44, x: -1.5, z: 1, discover: ["hutan", "树腰有榫眼。古蜀人插真枝于此，二〇五九的罗盘说它还在长，也在回应周日复盘。"], artifactHint: 2 },
+          { id: "c2n2", name: "半百祭台", level: 49, x: 0, z: -0.2, discover: ["chenli", "第五十层探方。半百之数，祭台现；线索资料室给它补了二〇五九周日图鉴标签。"], artifactHint: 5 },
           { id: "c2n3", name: "九枝叉", level: 54, x: 1.5, z: -1.5, discover: ["yangxue", "九枝九鸟，与《山海经》互文。"], artifactHint: 5 },
           { id: "c2n4", name: "树顶平台", level: 58, x: 2.8, z: -2.5, discover: ["narrator", "树顶有金沙碳迹。两个文明，一条河。"], artifactHint: 5 },
           { id: "c2n5", name: "神树天墓", level: 59, isTomb: true, discover: ["hutan", "III 级大墓。树通天地，墓通古今。"], artifactHint: 2 },

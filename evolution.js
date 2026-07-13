@@ -7,14 +7,14 @@
 
   var DEFAULT = {
     version: "6.1.1",
-    generation: 64,
-    universeDay: 13,
+    generation: 65,
+    universeDay: 14,
     civilizationEpoch: "1929-07",
-    civilizationDay: 64,
-    civilizationYear: 2057,
+    civilizationDay: 65,
+    civilizationYear: 2059,
     civilizationPhase: "超越期",
     autoTune: { enabled: true, windowSize: 8, maxMoveAdjust: 3, targetWinRate: 0.52 },
-    patchNotes: ["Gen.64 文明时钟", "超越期 2057 · 周六营地灯影"],
+    patchNotes: ["Gen.65 文明时钟", "超越期 2059 · 周日图鉴复盘"],
   };
 
   window.MATCH3_EVOLUTION = DEFAULT;

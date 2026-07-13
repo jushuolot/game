@@ -88,6 +88,7 @@
     l.rel = "stylesheet";
     l.href = href;
     l.media = "print";
+    if ("fetchPriority" in l) l.fetchPriority = "low";
     l.onload = function () {
       l.media = "all";
     };

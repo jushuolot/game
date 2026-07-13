@@ -11,6 +11,16 @@
     return catalog[typeId] || catalog[0];
   }
 
+  function dailyCodexNote() {
+    var evo = typeof window !== "undefined" && window.MATCH3_EVOLUTION ? window.MATCH3_EVOLUTION : null;
+    if (!evo || evo.universeDay % 7 !== 0) return "";
+    return " · 周日复盘 · 文明历 " + (evo.civilizationYear || "");
+  }
+
+  function captionText(e) {
+    return e.name + " · " + e.ref + dailyCodexNote();
+  }
+
   function buildDom(mount, typeId) {
     mount.innerHTML = "";
     var wrap = document.createElement("div");
@@ -30,6 +40,8 @@
     img.className = "artifact-museum-photo";
     img.draggable = false;
     img.decoding = "async";
+    img.loading = "lazy";
+    if ("fetchPriority" in img) img.fetchPriority = "low";
     var e = entry(typeId);
     img.alt = e.name;
     img.src = e.src;
@@ -40,7 +52,7 @@
 
     var cap = document.createElement("p");
     cap.className = "artifact-museum-caption";
-    cap.textContent = e.name + " · " + e.ref;
+    cap.textContent = captionText(e);
     if (e.license) {
       cap.title = (e.source || "公开资料") + " · " + e.license + (e.author ? " · " + e.author : "");
     }
@@ -69,7 +81,7 @@
       }.bind(this), 320);
     }
     if (this.dom && this.dom.cap) {
-      this.dom.cap.textContent = e.name + " · " + e.ref;
+      this.dom.cap.textContent = captionText(e);
       if (e.license) {
         this.dom.cap.title =
           (e.source || "公开资料") + " · " + e.license + (e.author ? " · " + e.author : "");

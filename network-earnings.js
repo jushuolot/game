@@ -22,6 +22,7 @@
     publicCommonsMirror: { amount: 0.016, phases: ["超越期"] },
     beyondPhaseTick: { amount: 0.0014, sessionCap: 0.01, phases: ["超越期"] },
     weeklyRecap: { amount: 0.02, phases: ["超越期", "复兴期"] },
+    sundayCodexRecap: { amount: 0.027, phases: ["超越期"], universeDayMod: 0 },
     newPitDataRoom: { amount: 0.024, phases: ["超越期"], universeDayMod: 1 },
     campArgumentArchive: { amount: 0.019, phases: ["超越期"], universeDayMod: 2 },
     pitWallHazardScan: { amount: 0.026, phases: ["超越期"], universeDayMod: 3 },
@@ -147,6 +148,7 @@
     lastPublicCommonsMirror: "",
     beyondSessionTickTotal: 0,
     lastWeeklyRecap: "",
+    lastSundayCodexRecap: "",
     lastNewPitDataRoom: "",
     lastCampArgumentArchive: "",
     lastPitWallHazardScan: "",
@@ -177,6 +179,7 @@
       state.beyondSessionTickTotal =
         typeof data.beyondSessionTickTotal === "number" ? data.beyondSessionTickTotal : 0;
       state.lastWeeklyRecap = data.lastWeeklyRecap || "";
+      state.lastSundayCodexRecap = data.lastSundayCodexRecap || "";
       state.lastNewPitDataRoom = data.lastNewPitDataRoom || "";
       state.lastCampArgumentArchive = data.lastCampArgumentArchive || "";
       state.lastPitWallHazardScan = data.lastPitWallHazardScan || "";
@@ -200,6 +203,7 @@
           lastPublicCommonsMirror: state.lastPublicCommonsMirror,
           beyondSessionTickTotal: state.beyondSessionTickTotal,
           lastWeeklyRecap: state.lastWeeklyRecap,
+          lastSundayCodexRecap: state.lastSundayCodexRecap,
           lastNewPitDataRoom: state.lastNewPitDataRoom,
           lastCampArgumentArchive: state.lastCampArgumentArchive,
           lastPitWallHazardScan: state.lastPitWallHazardScan,
@@ -240,6 +244,11 @@
       label: "营地灯影归档",
       source: "network_settlement",
       description: "周六整活日整理营地灯影、铜铃玩笑与神树回波，模拟口述档案入账",
+    });
+    registerChannel("sunday_codex_recap", {
+      label: "周日图鉴复盘",
+      source: "network_settlement",
+      description: "周日收工复盘日整理 Wikimedia 图鉴、探方照片与符号墙注脚，模拟档案入账",
     });
   }
 
@@ -469,6 +478,40 @@
     return credited;
   }
 
+  function trySundayCodexRecap() {
+    var evo = typeof window !== "undefined" && window.MATCH3_EVOLUTION ? window.MATCH3_EVOLUTION : {};
+    var uday = evo.universeDay || 0;
+    var cfg = CONFIG.sundayCodexRecap;
+    if (!cfg || uday % 7 !== cfg.universeDayMod) return 0;
+    var key = todayKey() + "-g" + (evo.generation || "x") + "-u" + uday;
+    if (state.lastSundayCodexRecap === key) return 0;
+    var clock =
+      typeof window !== "undefined" && window.MATCH3_CIVILIZATION_CLOCK
+        ? window.MATCH3_CIVILIZATION_CLOCK
+        : null;
+    var phase = clock ? clock.getPhase() : evo.civilizationPhase || "超越期";
+    if (cfg.phases.indexOf(phase) < 0) return 0;
+    state.lastSundayCodexRecap = key;
+    saveState();
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var credited = creditChannel("sunday_codex_recap", {
+      amount: cfg.amount,
+      meta: {
+        kind: "sunday_codex_recap",
+        universeDay: uday,
+        generation: evo.generation || 0,
+        phase: phase,
+        year: civ.civilizationYear,
+        sourceNote: "wikimedia_commons_public_catalog",
+        simulated: true,
+      },
+    });
+    if (credited > 0 && typeof window.showSystemToast === "function") {
+      window.showSystemToast("📚 周日图鉴复盘完成 · 文明历 " + civ.civilizationYear, 3600);
+    }
+    return credited;
+  }
+
   function tryNewPitDataRoom() {
     var evo = typeof window !== "undefined" && window.MATCH3_EVOLUTION ? window.MATCH3_EVOLUTION : {};
     var uday = evo.universeDay || 0;
@@ -484,7 +527,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastNewPitDataRoom = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     var credited = creditChannel("new_pit_data_room", {
       amount: cfg.amount,
       meta: {
@@ -516,7 +559,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampArgumentArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     return creditChannel("camp_argument_archive", {
       amount: cfg.amount,
       meta: {
@@ -545,7 +588,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastPitWallHazardScan = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     return creditChannel("pit_wall_hazard_scan", {
       amount: cfg.amount,
       meta: {
@@ -574,7 +617,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampKitchenLedger = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     return creditChannel("camp_kitchen_ledger", {
       amount: cfg.amount,
       meta: {
@@ -603,7 +646,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastClueBurstArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     return creditChannel("clue_burst_archive", {
       amount: cfg.amount,
       meta: {
@@ -632,7 +675,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampLanternReel = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2057 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
     return creditChannel("camp_lantern_reel", {
       amount: cfg.amount,
       meta: {
@@ -697,6 +740,7 @@
     tryCivilizationArchive();
     tryPublicCommonsMirror();
     tryWeeklyRecap();
+    trySundayCodexRecap();
     tryNewPitDataRoom();
     tryCampArgumentArchive();
     tryPitWallHazardScan();
