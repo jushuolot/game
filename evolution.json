@@ -1,13 +1,13 @@
 {
-  "version": "6.1.1",
-  "generation": 65,
-  "universeDay": 14,
+  "version": "6.1.2",
+  "generation": 66,
+  "universeDay": 15,
   "civilizationEpoch": "1929-07",
-  "civilizationDay": 65,
-  "civilizationYear": 2059,
+  "civilizationDay": 66,
+  "civilizationYear": 2061,
   "civilizationPhase": "超越期",
-  "dailyChronicle": "第 14 日·周日收工复盘。文明历 2059，广汉首发现后的第 65 代让此宇宙继续以两倍速度越过人间史；昨夜全队终于睡够，清晨把雨靴、探方照片和 Wikimedia 图鉴一件件核对，王墩煮粥，杨雪把符号墙复盘写进超越期档案。",
-  "releasedAt": "2026-07-07",
+  "dailyChronicle": "第 15 日·周一开新坑。造物主俯瞰文明历 2061：广汉首发现后的第 66 代让此宇宙一夜再越过人间两年；天刚亮，胡探给新坑立下 N15 编号，杨雪用微地形雷达与光谱薄片对齐探方，王墩咬着冷馒头拉直红绳，古蜀符号第一次从「目、树、鸟」连成一条方位句。",
+  "releasedAt": "2026-07-14",
   "autoTune": {
     "enabled": true,
     "windowSize": 8,
@@ -15,10 +15,10 @@
     "targetWinRate": 0.52
   },
   "patchNotes": [
-    "Gen.65 · 宇宙第14日 · 周日收工复盘 · 文明历 2059",
-    "剧情叙事：收工粥、雨靴晾晒、图鉴核对与符号墙复盘接入 2059 超越期日常",
-    "新增周日图鉴复盘寻金渠道，仅外部来源虚拟入账，不新增扣减/提现",
-    "启动屏与首页同步第14日复盘氛围，延续核心优先与非关键资源低优先级加载"
+    "Gen.66 · 宇宙第15日 · 周一开新坑 · 文明历 2061",
+    "剧情叙事：N15 新坑、冷馒头、微地形雷达与光谱薄片接入 2061 超越期日常",
+    "强化新坑资料室渠道的遥测摘要结算，仅外部来源虚拟入账，不新增扣减/提现",
+    "影院、图鉴与 Three.js 脚本显式低优先级加载，Wikimedia 实拍图继续按需异步解码"
   ],
   "virtualAccount": {
     "module": "virtual-account.js",

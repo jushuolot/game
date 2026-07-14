@@ -1,6 +1,7 @@
 # 文物图鉴 · 公开资料出处
 
 图鉴顶部实拍图来自 [Wikimedia Commons](https://commons.wikimedia.org/) 等开放授权资源，仅供教育展示。
+仓库内 `mask.jpg`、`staff.jpg`、`jade.jpg`、`pot.jpg`、`ivory.jpg`、`sunbird.jpg` 均为对应 Commons 原图的 960px JPEG 本地副本；图鉴打开后才按需异步解码，不参与首屏阻塞加载。
 
 | 文物 | 文件 | 作者 | 许可 |
 |------|------|------|------|

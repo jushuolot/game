@@ -6,15 +6,15 @@
   "use strict";
 
   var DEFAULT = {
-    version: "6.1.1",
-    generation: 65,
-    universeDay: 14,
+    version: "6.1.2",
+    generation: 66,
+    universeDay: 15,
     civilizationEpoch: "1929-07",
-    civilizationDay: 65,
-    civilizationYear: 2059,
+    civilizationDay: 66,
+    civilizationYear: 2061,
     civilizationPhase: "超越期",
     autoTune: { enabled: true, windowSize: 8, maxMoveAdjust: 3, targetWinRate: 0.52 },
-    patchNotes: ["Gen.65 文明时钟", "超越期 2059 · 周日图鉴复盘"],
+    patchNotes: ["Gen.66 文明时钟", "超越期 2061 · 周一开新坑"],
   };
 
   window.MATCH3_EVOLUTION = DEFAULT;

@@ -95,7 +95,7 @@
     document.head.appendChild(l);
   }
 
-  function loadScript(src) {
+  function loadScript(src, fetchPriority) {
     return new Promise(function (resolve, reject) {
       if (document.querySelector('script[src="' + src + '"]')) {
         resolve();
@@ -104,6 +104,7 @@
       var s = document.createElement("script");
       s.src = src;
       s.async = false;
+      if (fetchPriority && "fetchPriority" in s) s.fetchPriority = fetchPriority;
       s.onload = function () {
         resolve();
       };
@@ -114,10 +115,10 @@
     });
   }
 
-  function loadScriptChain(list) {
+  function loadScriptChain(list, fetchPriority) {
     return list.reduce(function (p, src) {
       return p.then(function () {
-        return loadScript(src);
+        return loadScript(src, fetchPriority);
       });
     }, Promise.resolve());
   }
@@ -138,7 +139,7 @@
     if (deferredStarted) return;
     deferredStarted = true;
     loadDeferredCss();
-    cinemaReady = loadScriptChain(CINEMA_SCRIPTS)
+    cinemaReady = loadScriptChain(CINEMA_SCRIPTS, "low")
       .then(function () {
         scheduleIdle(preloadPortraits, 2400, 500);
       })
@@ -151,7 +152,7 @@
     if (window.PortraitCinema && window.CinemaWipe) return Promise.resolve();
     if (!cinemaReady) {
       loadDeferredCss();
-      cinemaReady = loadScriptChain(CINEMA_SCRIPTS).catch(function () {
+      cinemaReady = loadScriptChain(CINEMA_SCRIPTS, "low").catch(function () {
         return null;
       });
     }
@@ -162,7 +163,7 @@
     if (window.ArtifactGallery) return Promise.resolve();
     if (!codexReady) {
       loadDeferredCss();
-      codexReady = loadScriptChain(CODEX_SCRIPTS)
+      codexReady = loadScriptChain(CODEX_SCRIPTS, "low")
         .catch(function () {
           return null;
         });
@@ -173,7 +174,7 @@
   function ensureThree() {
     if (typeof THREE !== "undefined" && window.ThreeEngine) return Promise.resolve();
     if (threeReady) return threeReady;
-    threeReady = loadScriptChain(THREE_SCRIPTS)
+    threeReady = loadScriptChain(THREE_SCRIPTS, "low")
       .then(function () {
         window.threeReady = typeof THREE !== "undefined";
         if (window.ThreeEngine && window.ThreeEngine.retryInit) {

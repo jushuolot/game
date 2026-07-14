@@ -23,7 +23,12 @@
     beyondPhaseTick: { amount: 0.0014, sessionCap: 0.01, phases: ["超越期"] },
     weeklyRecap: { amount: 0.02, phases: ["超越期", "复兴期"] },
     sundayCodexRecap: { amount: 0.027, phases: ["超越期"], universeDayMod: 0 },
-    newPitDataRoom: { amount: 0.024, phases: ["超越期"], universeDayMod: 1 },
+    newPitDataRoom: {
+      amount: 0.024,
+      telemetryBonus: 0.006,
+      phases: ["超越期"],
+      universeDayMod: 1,
+    },
     campArgumentArchive: { amount: 0.019, phases: ["超越期"], universeDayMod: 2 },
     pitWallHazardScan: { amount: 0.026, phases: ["超越期"], universeDayMod: 3 },
     campKitchenLedger: { amount: 0.021, phases: ["超越期"], universeDayMod: 4 },
@@ -119,9 +124,9 @@
     },
     new_pit_data_room: {
       id: "new_pit_data_room",
-      label: "新坑资料室",
+      label: "新坑遥测资料室",
       source: "network_settlement",
-      description: "周一新坑资料室整理公开线索，模拟档案入账",
+      description: "周一整理微地形、光谱薄片与层位公开摘要，模拟档案入账",
     },
     camp_argument_archive: {
       id: "camp_argument_archive",
@@ -493,7 +498,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastSundayCodexRecap = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     var credited = creditChannel("sunday_codex_recap", {
       amount: cfg.amount,
       meta: {
@@ -527,15 +532,19 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastNewPitDataRoom = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var telemetryBundle = ["microtopography", "spectral_slice", "stratigraphy"];
     var credited = creditChannel("new_pit_data_room", {
-      amount: cfg.amount,
+      amount: cfg.amount + (cfg.telemetryBonus || 0),
       meta: {
-        kind: "new_pit_indexing",
+        kind: "new_pit_telemetry_digest",
         universeDay: uday,
         generation: evo.generation || 0,
         phase: phase,
         year: civ.civilizationYear,
+        telemetryBundle: telemetryBundle,
+        publicDigest: true,
+        simulated: true,
       },
     });
     if (credited > 0 && typeof window.showSystemToast === "function") {
@@ -559,7 +568,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampArgumentArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     return creditChannel("camp_argument_archive", {
       amount: cfg.amount,
       meta: {
@@ -588,7 +597,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastPitWallHazardScan = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     return creditChannel("pit_wall_hazard_scan", {
       amount: cfg.amount,
       meta: {
@@ -617,7 +626,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampKitchenLedger = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     return creditChannel("camp_kitchen_ledger", {
       amount: cfg.amount,
       meta: {
@@ -646,7 +655,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastClueBurstArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     return creditChannel("clue_burst_archive", {
       amount: cfg.amount,
       meta: {
@@ -675,7 +684,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampLanternReel = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2059 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
     return creditChannel("camp_lantern_reel", {
       amount: cfg.amount,
       meta: {
