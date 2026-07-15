@@ -29,7 +29,12 @@
       phases: ["超越期"],
       universeDayMod: 1,
     },
-    campArgumentArchive: { amount: 0.019, phases: ["超越期"], universeDayMod: 2 },
+    campArgumentArchive: {
+      amount: 0.019,
+      multiSpeakerBonus: 0.005,
+      phases: ["超越期"],
+      universeDayMod: 2,
+    },
     pitWallHazardScan: { amount: 0.026, phases: ["超越期"], universeDayMod: 3 },
     campKitchenLedger: { amount: 0.021, phases: ["超越期"], universeDayMod: 4 },
     clueBurstArchive: { amount: 0.028, phases: ["超越期"], universeDayMod: 5 },
@@ -130,9 +135,9 @@
     },
     camp_argument_archive: {
       id: "camp_argument_archive",
-      label: "营地口述档案",
+      label: "营地多声部口述档案",
       source: "network_settlement",
-      description: "周二拌嘴日整理营地口述声纹，模拟档案归档入账",
+      description: "周二将五人声纹、坑壁回声与古蜀符号交叉索引，按多说话人档案模拟入账",
     },
     pit_wall_hazard_scan: {
       id: "pit_wall_hazard_scan",
@@ -498,7 +503,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastSundayCodexRecap = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     var credited = creditChannel("sunday_codex_recap", {
       amount: cfg.amount,
       meta: {
@@ -532,7 +537,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastNewPitDataRoom = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     var telemetryBundle = ["microtopography", "spectral_slice", "stratigraphy"];
     var credited = creditChannel("new_pit_data_room", {
       amount: cfg.amount + (cfg.telemetryBonus || 0),
@@ -568,15 +573,22 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampArgumentArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
+    var participants = ["胡探", "王墩", "杨雪", "金牙刘", "陈礼"];
+    var multiSpeakerBonus = participants.length >= 4 ? cfg.multiSpeakerBonus || 0 : 0;
     return creditChannel("camp_argument_archive", {
-      amount: cfg.amount,
+      amount: cfg.amount + multiSpeakerBonus,
       meta: {
-        kind: "camp_argument_transcript",
+        kind: "camp_argument_cross_index",
         universeDay: uday,
         generation: evo.generation || 0,
         phase: phase,
         year: civ.civilizationYear,
+        participants: participants,
+        participantCount: participants.length,
+        multiSpeakerBonus: multiSpeakerBonus,
+        disputeTopic: "red_marker_and_spectral_bag",
+        symbolPhrase: "过树向南",
         simulated: true,
       },
     });
@@ -597,7 +609,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastPitWallHazardScan = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     return creditChannel("pit_wall_hazard_scan", {
       amount: cfg.amount,
       meta: {
@@ -626,7 +638,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampKitchenLedger = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     return creditChannel("camp_kitchen_ledger", {
       amount: cfg.amount,
       meta: {
@@ -655,7 +667,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastClueBurstArchive = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     return creditChannel("clue_burst_archive", {
       amount: cfg.amount,
       meta: {
@@ -684,7 +696,7 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastCampLanternReel = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2061 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
     return creditChannel("camp_lantern_reel", {
       amount: cfg.amount,
       meta: {

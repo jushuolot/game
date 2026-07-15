@@ -173,6 +173,7 @@ MATCH3_CIVILIZATION_CLOCK.formatForSplash(); // "Gen.50 · 文明历 2029 · 复
 | `relic_bounty` | `bounty` | 晚间 18–24 点首次启动 |
 | `civilization_archive` | `network_settlement` | 每日首次启动（复兴期/超越期） |
 | `new_pit_data_room` | `network_settlement` | 宇宙日 mod 7 = 1 的新坑日首次启动 |
+| `camp_argument_archive` | `network_settlement` | 宇宙日 mod 7 = 2 的拌嘴日首次启动；多说话人声纹追加归档结算 |
 | `pit_wall_hazard_scan` | `network_settlement` | 宇宙日 mod 7 = 3 的险情日首次启动 |
 | `camp_kitchen_ledger` | `network_settlement` | 宇宙日 mod 7 = 4 的馋嘴/生活日首次启动 |
 | `clue_burst_archive` | `network_settlement` | 宇宙日 mod 7 = 5 的线索爆发日首次启动 |
@@ -200,8 +201,8 @@ MATCH3_NETWORK_EARNINGS.creditChannel("my_channel", { amount: 0.01, meta: { ... 
 
 ## 当前基线
 
-- **Gen.66** · v6.1.2 · 宇宙第 15 日 · 周一开新坑 · **文明历 2061 · 超越期**
-- 文明时钟已上线；堪舆图、桌面 VN、发现弹窗、三星盛典、新坑遥测资料室、营地口述档案、坑壁险情扫描、营地伙食账本、线索突发归档、营地灯影归档与周日图鉴复盘寻金渠道已就绪
+- **Gen.67** · v6.1.3 · 宇宙第 16 日 · 周二拌嘴 · **文明历 2063 · 超越期**
+- 文明时钟已上线；堪舆图、桌面 VN、发现弹窗、三星盛典、新坑遥测资料室、营地多声部口述档案、坑壁险情扫描、营地伙食账本、线索突发归档、营地灯影归档与周日图鉴复盘寻金渠道已就绪
 
 ---
 
