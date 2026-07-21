@@ -35,7 +35,12 @@
       phases: ["超越期"],
       universeDayMod: 2,
     },
-    pitWallHazardScan: { amount: 0.026, phases: ["超越期"], universeDayMod: 3 },
+    pitWallHazardScan: {
+      amount: 0.026,
+      bossPressureBonus: 0.006,
+      phases: ["超越期"],
+      universeDayMod: 3,
+    },
     campKitchenLedger: { amount: 0.021, phases: ["超越期"], universeDayMod: 4 },
     clueBurstArchive: { amount: 0.028, phases: ["超越期"], universeDayMod: 5 },
     campLanternReel: { amount: 0.023, phases: ["超越期"], universeDayMod: 6 },
@@ -143,7 +148,7 @@
       id: "pit_wall_hazard_scan",
       label: "坑壁险情扫描",
       source: "network_settlement",
-      description: "周三险情日归档坑壁湿度与回压曲线，模拟避险数据入账",
+      description: "周三险情日归档坑壁湿度、回压曲线与守关层震感交叉，模拟避险数据入账",
     },
   };
 
@@ -609,15 +614,22 @@
     if (cfg.phases.indexOf(phase) < 0) return 0;
     state.lastPitWallHazardScan = key;
     saveState();
-    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2063 };
+    var civ = clock ? clock.getCivilizationDate() : { civilizationYear: evo.civilizationYear || 2065 };
+    var bossPressureBonus = cfg.bossPressureBonus || 0;
     return creditChannel("pit_wall_hazard_scan", {
-      amount: cfg.amount,
+      amount: cfg.amount + bossPressureBonus,
       meta: {
-        kind: "pit_wall_hazard_scan",
+        kind: "pit_wall_hazard_cross_scan",
         universeDay: uday,
         generation: evo.generation || 0,
         phase: phase,
         year: civ.civilizationYear,
+        wallSector: "N15_east",
+        humidityCurve: true,
+        backPressurePeak: true,
+        bossLayerTremor: true,
+        bossPressureBonus: bossPressureBonus,
+        hazardPhrase: "气不稳不动土",
         simulated: true,
       },
     });

@@ -15,29 +15,29 @@
     chapters: [
       {
         nodes: [
-          { id: "c0n0", name: "N15 声纹室", level: 0, x: -3.5, z: 2.2, discover: ["chenli", "二〇六三，第十六日复核。昨夜铜铃、今晨拌嘴与坑壁回声都分开了——先校准 N15 声纹阵列，再动铲。"], artifactHint: 3 },
-          { id: "c0n1", name: "陶片层", level: 4, x: -2, z: 0.8, discover: ["wangdun", "陶片！成片的！刘哥别装忙，胖爷那支红笔是不是拴在你记录夹后面？"], artifactHint: 3 },
-          { id: "c0n2", name: "象牙露头", level: 9, x: -0.5, z: -0.3, discover: ["yangxue", "象牙饰露头了。二〇六三光谱与声层都显示它下面还有朱砂——二位先停战，整块记录。"], artifactHint: 4 },
-          { id: "c0n3", name: "金粉纹层", level: 14, x: 1, z: -1.2, discover: ["jinyaliu", "金粉！刘哥只看看。王墩小点声，N15 已把我心跳和你的控诉分成两条声纹了！"], artifactHint: 1 },
-          { id: "c0n4", name: "祭祀面", level: 18, x: 2.2, z: -2, discover: ["hutan", "罗盘疯了。前面是祭祀面，层位不能乱，铜铃再响也先退半步。"], artifactHint: 0 },
-          { id: "c0n5", name: "青铜门墓", level: 19, isTomb: true, discover: ["chenli", "门缝里有光，金杖纹样也对上了。I 级大墓——青铜门启。"], artifactHint: 0 },
+          { id: "c0n0", name: "N15 险情室", level: 0, x: -3.5, z: 2.2, discover: ["chenli", "二〇六五，第十七日复核。东壁回压、湿度曲线与守关层震感都叠进避险档——先校准 N15，再动铲。"], artifactHint: 3 },
+          { id: "c0n1", name: "陶片层", level: 4, x: -2, z: 0.8, discover: ["wangdun", "陶片！成片的！刘哥别装忙，回压表针一抖，胖爷绳就先拴紧！"], artifactHint: 3 },
+          { id: "c0n2", name: "象牙露头", level: 9, x: -0.5, z: -0.3, discover: ["yangxue", "象牙饰露头了。二〇六五光谱与湿度都显示它下面还有朱砂——先停半步，整块记录。"], artifactHint: 4 },
+          { id: "c0n3", name: "金粉纹层", level: 14, x: 1, z: -1.2, discover: ["jinyaliu", "金粉！刘哥只看看。王墩小点声，守关层震感一起来，我心跳都得分开记档！"], artifactHint: 1 },
+          { id: "c0n4", name: "祭祀面", level: 18, x: 2.2, z: -2, discover: ["hutan", "罗盘疯了。前面是祭祀面，气不稳，铜铃再响也先退半步。"], artifactHint: 0 },
+          { id: "c0n5", name: "青铜门墓", level: 19, isTomb: true, discover: ["chenli", "门缝里有光，金杖纹样也对上了。I 级大墓——守关层未降，停步等我。"], artifactHint: 0 },
         ],
       },
       {
         nodes: [
-          { id: "c1n0", name: "门后甬道", level: 20, x: -3.2, z: 2, discover: ["yangxue", "二〇六三，超越期第十六日。门后风带着铜锈，N15 回声在这里由东北折向南。"], artifactHint: 0 },
-          { id: "c1n1", name: "封土区", level: 24, x: -1.8, z: 0.5, discover: ["yangxue", "封土层！消除相邻文物等于震土，二〇六三模型提醒：光谱、微地形和声层都要留住。"], artifactHint: 3 },
+          { id: "c1n0", name: "门后甬道", level: 20, x: -3.2, z: 2, discover: ["yangxue", "二〇六五，超越期第十七日。门后风带着铜锈，N15 回压在这里由东北折向南。"], artifactHint: 0 },
+          { id: "c1n1", name: "封土区", level: 24, x: -1.8, z: 0.5, discover: ["yangxue", "封土层！消除相邻文物等于震土，二〇六五模型提醒：湿度、回压和震感都要留住。"], artifactHint: 3 },
           { id: "c1n2", name: "金杖影", level: 29, x: -0.3, z: -0.8, discover: ["narrator", "黑暗中一根金杖的轮廓。王权与神权，在一根杖上。"], artifactHint: 1 },
           { id: "c1n3", name: "神格位", level: 34, x: 1.2, z: -1.8, discover: ["chenli", "面具不是装饰，是容器。记录每一面。"], artifactHint: 0 },
-          { id: "c1n4", name: "千面阵", level: 38, x: 2.5, z: -2.8, discover: ["wangdun", "妈呀，全是眼睛！胖爷先消一层——金牙刘闭上你的估价嘴，N15 光谱仪还亮着！"], artifactHint: 0 },
-          { id: "c1n5", name: "纵目神墓", level: 39, isTomb: true, discover: ["hutan", "II 级大墓。纵目之神，在等我们读完层位。"], artifactHint: 0 },
+          { id: "c1n4", name: "千面阵", level: 38, x: 2.5, z: -2.8, discover: ["wangdun", "妈呀，全是眼睛！胖爷先消一层——金牙刘闭上你的估价嘴，守关层震感还亮着红档！"], artifactHint: 0 },
+          { id: "c1n5", name: "纵目神墓", level: 39, isTomb: true, discover: ["hutan", "II 级大墓。纵目之神，在等我们读完层位——气稳再进。"], artifactHint: 0 },
         ],
       },
       {
         nodes: [
-          { id: "c2n0", name: "树根层", level: 40, x: -3, z: 2.5, discover: ["wangdun", "神树！根比胖爷腰还粗——等等，红笔卡在树根缝里！金牙刘，你还说没拿？"], artifactHint: 2 },
-          { id: "c2n1", name: "树腰洞", level: 44, x: -1.5, z: 1, discover: ["hutan", "树腰有榫眼。二〇六三的罗盘与声纹回波都指向第三枝，再往南。"], artifactHint: 2 },
-          { id: "c2n2", name: "半百祭台", level: 49, x: 0, z: -0.2, discover: ["chenli", "第五十层探方。N15 声纹室已把方位句续成「目、树、鸟——过树向南」，钉上二〇六三层位图。"], artifactHint: 5 },
+          { id: "c2n0", name: "树根层", level: 40, x: -3, z: 2.5, discover: ["wangdun", "神树！根比胖爷腰还粗——等等，东壁闷响又来了！金牙刘，双绳先拴上！"], artifactHint: 2 },
+          { id: "c2n1", name: "树腰洞", level: 44, x: -1.5, z: 1, discover: ["hutan", "树腰有榫眼。二〇六五的罗盘与回压曲线都指向第三枝，再往南——气稳再爬。"], artifactHint: 2 },
+          { id: "c2n2", name: "半百祭台", level: 49, x: 0, z: -0.2, discover: ["chenli", "第五十层探方。N15 险情室已把方位句续成「目、树、鸟——过树向南」，钉上二〇六五避险图。"], artifactHint: 5 },
           { id: "c2n3", name: "九枝叉", level: 54, x: 1.5, z: -1.5, discover: ["yangxue", "九枝九鸟，与《山海经》互文。"], artifactHint: 5 },
           { id: "c2n4", name: "树顶平台", level: 58, x: 2.8, z: -2.5, discover: ["narrator", "树顶有金沙碳迹。两个文明，一条河。"], artifactHint: 5 },
           { id: "c2n5", name: "神树天墓", level: 59, isTomb: true, discover: ["hutan", "III 级大墓。树通天地，墓通古今。"], artifactHint: 2 },
