@@ -4,6 +4,26 @@
   "mode": "parallel-universe",
   "ownerRole": "observer-god",
   "ownerNote": "用户上帝视角每晚验收；世界每日循环、每日不同，像真人过日子",
+  "longArc": {
+    "id": "carbon-to-silicon",
+    "label": "从碳基向硅基进化",
+    "policy": "gradual-only",
+    "keepTheme": "古蜀秘档 · 三星堆 · 摸金考古（允许硅基重读，禁止换题材）",
+    "teamRemainsCarbon": true,
+    "nightlyGoal": "advance or sustain siliconArc by at most one stage; chronicle + ≥1 dialogue beat must show carbon→silicon progress",
+    "stages": [
+      "carbon_dominant",
+      "hybridizing",
+      "silicon_rising",
+      "silicon_threshold"
+    ],
+    "defaultByCivilizationYear": {
+      "carbon_dominant": "<2060",
+      "hybridizing": ">=2060",
+      "silicon_rising": ">=2080",
+      "silicon_threshold": ">=2100"
+    }
+  },
   "checkTimeLocal": "evening",
   "universeDay": 17,
   "lastGeneration": 68,
@@ -56,7 +76,8 @@
     "allowRewrite": true,
     "files": ["story.js", "map-narrative.js", "expedition-data.js"],
     "minDialogueChangesPerNight": 3,
-    "keepTheme": "古蜀秘档 · 三星堆 · 摸金考古"
+    "keepTheme": "古蜀秘档 · 三星堆 · 摸金考古",
+    "longArcHook": "carbon-to-silicon"
   },
   "nextThemes": [
     "周一：新坑 discover 台词换一批",
